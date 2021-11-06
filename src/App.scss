@@ -2,21 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.3s;
+    transition: all 0.1s;
 }
 :root {
-    --height-header: 3rem;
+    --height-header: 7rem;
 
     --hue-color: 250;
-    --first-color: hsl(var(--hue-color), 69%, 61%);
-    --first-color-second: hsl(var(--hue-color), 69%, 61%);
-    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
-    --first-color-light: hsl(var(--hue-color), 92%, 85%);
-    --title-color: hsl(var(--hue-color), 8%, 15%);
-    --text-color: hsl(var(--hue-color), 8%, 45%);
-    --text-color-light: hsl(var(--hue-color), 8%, 65%);
-    --input-color: hsl(var(--hue-color), 70%, 96%);
-    --body-color: hsl(var(--hue-color), 69%, 99%);
+    --first-color: hsl(250, 69%, 61%);
+    --first-color-second: hsl(250, 69%, 78%);
+    --first-color-alt: hsl(250, 57%, 53%);
+    --first-color-light: hsl(250, 92%, 85%);
+    --title-color: hsl(250, 8%, 15%);
+    --text-color: hsl(250, 8%, 45%);
+    --text-color-light: hsl(250, 8%, 65%);
+    --input-color: hsl(250, 70%, 96%);
+    --body-color: hsl(250, 69%, 99%);
     --container-color: #fff;
 
     --big-font-size: 2rem;
@@ -73,20 +73,44 @@ h4 {
     color: var(--text-color);
     font-weight: var(--font-semi-bold);
 }
-ul{
-  list-style: none;
+ul {
+    list-style: none;
 }
-a{
-  text-decoration: none'
-
+a {
+    text-decoration: none;
 }
-img{
-  max-width: 100%;
-  height: auto; 
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-
-.section{
-  padding: 2rem 0 4rem;
-  
+.section {
+    padding: 2rem 0 4rem;
+    height: 100vh;
+    &__title {
+        font-size: var(--h1-font-size);
+    }
+    &__subtitle {
+        display: block;
+        font-size: var(--small-font-size);
+        margin: var(--mb-3);
+    }
+    &__title,
+    &__subtitle {
+        text-align: center;
+    }
+}
+.container {
+    max-width: 786px;
+    margin: 0 var(--mb-1-5);
+}
+.grid {
+    display: flex;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .section {
+        padding-top: var(--height-header) !important;
+        // margin-top: var(--height-header);
+    }
 }

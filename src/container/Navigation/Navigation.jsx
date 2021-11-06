@@ -11,25 +11,25 @@ const Navigation = () => {
                 <div className="nav_list">
                     <ul>
                         <li>
-                            <a href="">
+                            <a className="active" href="#home">
                                 <AiFillHome />
                                 <p>Home</p>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="#about">
                                 <BsFillPersonFill></BsFillPersonFill>
                                 <p>About</p>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="#education">
                                 <MdSchool></MdSchool>
                                 <p>Education</p>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="#skill">
                                 <BsBookFill></BsBookFill>
                                 <p>Skills</p>
                             </a>
@@ -41,7 +41,7 @@ const Navigation = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="#contact">
                                 <RiContactsFill></RiContactsFill>
                                 <p>Contact</p>
                             </a>
