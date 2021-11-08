@@ -7,16 +7,16 @@
 :root {
     --height-header: 7rem;
 
-    --hue-color: 250;
-    --first-color: hsl(250, 69%, 61%);
-    --first-color-second: hsl(250, 69%, 78%);
-    --first-color-alt: hsl(250, 57%, 53%);
-    --first-color-light: hsl(250, 92%, 85%);
-    --title-color: hsl(250, 8%, 15%);
-    --text-color: hsl(250, 8%, 45%);
-    --text-color-light: hsl(250, 8%, 65%);
-    --input-color: hsl(250, 70%, 96%);
-    --body-color: hsl(250, 69%, 99%);
+    --hue-color: 220;
+    --first-color: hsl(var(--hue-color), 69%, 61%);
+    --first-color-second: hsl(var(--hue-color), 69%, 78%);
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+    --first-color-light: hsl(var(--hue-color), 92%, 85%);
+    --title-color: hsl(var(--hue-color), 8%, 15%);
+    --text-color: hsl(var(--hue-color), 8%, 45%);
+    --text-color-light: hsl(var(--hue-color), 8%, 65%);
+    --input-color: hsl(var(--hue-color), 70%, 96%);
+    --body-color: hsl(var(--hue-color), 69%, 99%);
     --container-color: #fff;
 
     --big-font-size: 2rem;
@@ -61,7 +61,7 @@ html {
 body {
     min-height: 100vh;
     width: 100%;
-    margin: 0 0 var(--height-header) 0;
+    overflow-x: hidden;
     font-size: var(--normal-font-size);
     background-color: var(--body-color);
     color: var(--text-color);
@@ -86,6 +86,7 @@ img {
 button {
     cursor: pointer;
 }
+
 .section {
     padding: 0 2rem;
     // height: 100vh;
@@ -112,6 +113,7 @@ button {
 }
 button.beauty {
     display: flex;
+    width: max-content;
     background-color: var(--first-color);
     padding: 1rem;
     border-radius: 0.5rem;

@@ -56,6 +56,13 @@ const Skills = () => {
                                 <div className="infor__detail--item">
                                     NodeJs
                                 </div>
+                                <div className="infor__detail--item">
+                                    MongoDB
+                                </div>
+                                <div className="infor__detail--item">
+                                    SQLServer
+                                </div>
+                                <div className="infor__detail--item">MySQL</div>
                             </div>
                         </div>
                         <div className="option">

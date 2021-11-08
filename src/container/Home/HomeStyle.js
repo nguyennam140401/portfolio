@@ -34,29 +34,6 @@ export const Style = styled.div`
                     margin-right: 1.5rem;
                 }
             }
-            button {
-                display: flex;
-                background-color: var(--first-color);
-                padding: 1rem;
-                border-radius: 0.5rem;
-                outline: none;
-                color: #fff;
-                font-size: var(--h3-font-size);
-                border: none;
-                box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-                margin-top: 1.5rem;
-                transition: 0.4s ease-in-out;
-                border: 2px solid var(--first-color);
-                svg {
-                    margin-left: 0.5rem;
-                }
-                &:hover {
-                    background-color: transparent;
-                    color: var(--first-color);
-                    /* font-weight: 600; */
-                    /* border: 2px solid var(--first-color); */
-                }
-            }
         }
         @media (min-width: 768px) {
             &__img {

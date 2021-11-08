@@ -67,6 +67,9 @@ const Contact = () => {
                                 <label htmlFor="">Message</label>
                                 <textarea name="" />
                             </div>
+                            <div className="form__control">
+                                <button className="beauty">Send</button>
+                            </div>
                         </form>
                     </div>
                 </div>

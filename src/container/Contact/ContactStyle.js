@@ -36,11 +36,12 @@ export const Style = styled.div`
                         }
                         input,
                         textarea {
-                            border: 1px solid var(--title-color);
+                            border: 1px solid var(--first-color);
                             outline: none;
                             padding: 0.5rem;
                             font-size: 1.3rem;
                             width: 100%;
+                            border-radius: 0.5rem;
                         }
                     }
                 }

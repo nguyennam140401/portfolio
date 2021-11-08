@@ -9,7 +9,7 @@ export const Style = styled.div`
             font-weight: var(--font-semi-bold);
         }
         &__container {
-            justify-items: center;
+            /* justify-items: center; */
             display: grid;
             grid-template-columns: repeat(2, 50%);
             gap: 1.5rem;

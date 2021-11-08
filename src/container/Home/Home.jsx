@@ -32,7 +32,7 @@ const Home = () => {
                     </div>
                     <div className="home__content--button">
                         <a href="#about">
-                            <button>
+                            <button className="beauty">
                                 Read more{' '}
                                 <TiArrowRightOutline></TiArrowRightOutline>
                             </button>
