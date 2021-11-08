@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { RiPagesLine, RiDatabase2Line } from 'react-icons/ri'
 import { Style } from './SkillStyle'
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import { MdKeyboardArrowDown, MdOutlineDesignServices } from 'react-icons/md'
 const Skills = () => {
+    useEffect(() => {
+        const listSkills = document.querySelectorAll('.skill__container--item')
+        listSkills.forEach((item) => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active')
+            })
+        })
+    }, [])
     return (
         <Style>
             <div className="section skill" id="skill">
@@ -31,7 +39,9 @@ const Skills = () => {
                                 </div>
                             </div>
                         </div>
-                        <MdKeyboardArrowDown></MdKeyboardArrowDown>
+                        <div className="option">
+                            <MdKeyboardArrowDown></MdKeyboardArrowDown>
+                        </div>
                     </div>
                     <div className="skill__container--item">
                         <div className="icon">
@@ -47,6 +57,28 @@ const Skills = () => {
                                     NodeJs
                                 </div>
                             </div>
+                        </div>
+                        <div className="option">
+                            <MdKeyboardArrowDown></MdKeyboardArrowDown>
+                        </div>
+                    </div>
+                    <div className="skill__container--item">
+                        <div className="icon">
+                            <MdOutlineDesignServices></MdOutlineDesignServices>
+                        </div>
+                        <div className="infor">
+                            <div className="infor__title">
+                                <h3>Design</h3>
+                                <p>None</p>
+                            </div>
+                            <div className="infor__detail">
+                                <div className="infor__detail--item">
+                                    Chua biet
+                                </div>
+                            </div>
+                        </div>
+                        <div className="option">
+                            <MdKeyboardArrowDown></MdKeyboardArrowDown>
                         </div>
                     </div>
                 </div>

@@ -10,26 +10,34 @@ export const Style = styled.div`
             font-weight: var(--font-semi-bold);
         }
         &__container {
+            justify-items: center;
             display: grid;
             grid-template-columns: repeat(2, 50%);
             gap: 1.5rem;
             &--item {
                 display: flex;
                 cursor: pointer;
-                /* align-items: center; */
+
                 svg {
                     font-size: 2rem;
-                    /* flex-basis: content; */
                 }
                 .icon {
                     font-size: 2.5rem;
                     margin-right: 1rem;
                     color: var(--first-color-alt);
                 }
-
+                .option {
+                    svg {
+                        transition: 0.4s;
+                        transform: rotate(0);
+                        transform-origin: center center;
+                    }
+                }
                 .infor {
                     &__detail {
-                        display: none;
+                        height: 0px;
+                        overflow: hidden;
+                        transition: 0.4s linear;
                         &--item {
                             color: var(--first-color);
                             font-weight: var(--font-semi-bold);
@@ -40,10 +48,18 @@ export const Style = styled.div`
                 &.active {
                     .infor {
                         &__detail {
-                            display: block;
+                            height: 100%;
+                        }
+                    }
+                    .option {
+                        svg {
+                            transform: rotate(180deg);
                         }
                     }
                 }
+            }
+            @media (min-width: 768px) {
+                grid-template-columns: repeat(3, 33%);
             }
         }
     }

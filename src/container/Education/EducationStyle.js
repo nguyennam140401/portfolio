@@ -13,6 +13,9 @@ export const Style = styled.div`
                 &:nth-child(2n + 1) {
                     justify-items: flex-end;
                 }
+                @media (min-width: 768px) {
+                    justify-items: center !important;
+                }
                 .data {
                     padding: 1.5rem 0;
                     h3 {
