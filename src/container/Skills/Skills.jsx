@@ -16,7 +16,7 @@ const Skills = () => {
             <div className="section skill" id="skill">
                 <div className="skill__title">Skills</div>
                 <div className="skill__container">
-                    <div className="skill__container--item active">
+                    <div className="skill__container--item">
                         <div className="icon">
                             <RiPagesLine></RiPagesLine>
                         </div>
