@@ -7,6 +7,7 @@ import Project from './container/Project/Project'
 import Skills from './container/Skills/Skills'
 import Education from './container/Education/Education'
 import { useEffect } from 'react'
+import Footer from './container/Footer/Footer'
 function App() {
     useEffect(() => {
         const listSection = document.querySelectorAll('.section')
@@ -39,6 +40,7 @@ function App() {
             <Skills />
             <Project />
             <Contact />
+            <Footer></Footer>
         </div>
     )
 }
