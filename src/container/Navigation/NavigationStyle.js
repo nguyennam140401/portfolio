@@ -9,6 +9,7 @@ export const Style = styled.div`
         bottom: 0;
         margin: 0;
         left: 0;
+        z-index: var(--z-modal);
         padding: 20px 0;
         border-radius: 1rem;
         &_list {
@@ -19,7 +20,7 @@ export const Style = styled.div`
                 justify-content: flex-end;
                 list-style-type: none;
 
-                z-index: var(--z-index);
+                z-index: var(--z-modal);
                 height: var(--header-height);
 
                 li {

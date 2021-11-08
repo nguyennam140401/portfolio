@@ -5,12 +5,12 @@ import { Style } from './AboutStyle'
 import CV from '../../assets/CV_My_CV.pdf'
 import { FiDownload } from 'react-icons/fi'
 const About = () => {
-    const infor = {
-        address: 'Liên Hà, Đông Anh, Hà Nội',
-        email: 'nguyennam140401@gmail.com',
-        birthday: '14-04-2001',
-        phone: '0346663207',
-    }
+    // const infor = {
+    //     address: 'Liên Hà, Đông Anh, Hà Nội',
+    //     email: 'nguyennam140401@gmail.com',
+    //     birthday: '14-04-2001',
+    //     phone: '0346663207',
+    // }
     return (
         <Style>
             <div className="section about" id="about">
