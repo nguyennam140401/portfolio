@@ -89,19 +89,18 @@ button {
 
 .section {
     padding: 0 2rem;
-    // height: 100vh;
-    &__title {
-        font-size: var(--h1-font-size);
-    }
-    &__subtitle {
-        display: block;
-        font-size: var(--small-font-size);
-        margin: var(--mb-3);
-    }
-    &__title,
-    &__subtitle {
-        text-align: center;
-    }
+}
+.section__title {
+    font-size: var(--h1-font-size);
+}
+.section__subtitle {
+    display: block;
+    font-size: var(--small-font-size);
+    margin: var(--mb-3);
+}
+.section__title,
+.section__subtitle {
+    text-align: center;
 }
 .container {
     max-width: 786px;
@@ -125,20 +124,18 @@ button.beauty {
     margin-top: 1.5rem;
     transition: 0.4s ease-in-out;
     border: 2px solid var(--first-color);
-    svg {
-        margin-left: 0.5rem;
-    }
-    &:hover {
-        background-color: transparent;
-        color: var(--first-color);
-        /* font-weight: 600; */
-        /* border: 2px solid var(--first-color); */
-    }
+}
+button.beauty:hover {
+    background-color: transparent;
+    color: var(--first-color);
+}
+button.beauty svg {
+    margin-left: 0.5rem;
 }
 @media (min-width: 768px) {
     .section {
         padding-top: var(--height-header) !important;
-        // margin-top: var(--height-header);
+        /* // margin-top: var(--height-header); */
     }
 }
 

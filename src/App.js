@@ -1,4 +1,4 @@
-import './App.scss'
+import './App.css'
 import Home from './container/Home/Home'
 import Navigation from './container/Navigation/Navigation'
 import Contact from './container/Contact/Contact'
