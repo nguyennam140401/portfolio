@@ -16,10 +16,10 @@ const About = () => {
             <div className="section about" id="about">
                 <div className="about__title">About</div>
                 <div className="about__container">
-                    <div className="about__container--img">
+                    <div className="about__container--img animation animation-left">
                         <img src={AboutImg} alt="" />
                     </div>
-                    <div className="about__container--infor">
+                    <div className="about__container--infor animation animation-right">
                         <h2>Một số thông tin về mình</h2>
                         <p className="infor-item">
                             <span>

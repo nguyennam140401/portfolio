@@ -155,3 +155,22 @@ button.beauty svg {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: var(--first-color-light);
 }
+.animation {
+    transition: 0.5s linear;
+}
+.animation-left {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+.animation-right {
+    opacity: 0;
+    transform: translateX(100px);
+}
+.animation-top {
+    opacity: 0;
+    transform: translateY(100px);
+}
+.animation.active {
+    opacity: 1;
+    transform: translate(0);
+}

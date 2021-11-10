@@ -32,6 +32,7 @@ export const Style = styled.div`
                 font-size: var(--h1-font-size);
                 a {
                     margin-right: 1.5rem;
+                    color: var(--first-color-alt);
                 }
             }
         }

@@ -11,6 +11,7 @@ import Footer from './container/Footer/Footer'
 function App() {
     useEffect(() => {
         const listSection = document.querySelectorAll('.section')
+        const listAnimation = document.querySelectorAll('.animation')
 
         window.addEventListener('scroll', () => {
             listSection.forEach((section) => {
@@ -27,6 +28,14 @@ function App() {
                             item.classList.add('active')
                         }
                     })
+                }
+            })
+            listAnimation.forEach((item) => {
+                if (
+                    item.getBoundingClientRect().top <
+                    window.outerHeight - 150
+                ) {
+                    item.classList.add('active')
                 }
             })
         })

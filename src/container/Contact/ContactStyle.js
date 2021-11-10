@@ -14,6 +14,7 @@ export const Style = styled.div`
                 margin-bottom: 1.5rem;
                 .location__item {
                     display: flex;
+                    margin-bottom: 1rem;
                     font-size: 1.5rem;
                     .icon {
                         margin-right: 1rem;

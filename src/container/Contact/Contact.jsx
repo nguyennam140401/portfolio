@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Style } from './ContactStyle'
 import {
     HiOutlineLocationMarker,
@@ -7,6 +7,21 @@ import {
 } from 'react-icons/hi'
 
 const Contact = () => {
+    const [formDataState, setFormDataState] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+    })
+    const changeInput = (e) => {
+        const field = e.target.name
+        const value = e.target.value
+        setFormDataState({ ...formDataState, [field]: value })
+    }
+    const submit = (e) => {
+        e.preventDefault()
+        console.log(formDataState)
+    }
     return (
         <Style>
             <div className="section contact" id="contact">
@@ -50,22 +65,45 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className="contact__container--form">
-                        <form action="">
+                        <form onSubmit={submit}>
                             <div className="form__control">
-                                <label htmlFor="">Your Name</label>
-                                <input type="text" />
+                                <label htmlFor="name">Your Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    onChange={changeInput}
+                                />
                             </div>
                             <div className="form__control">
-                                <label htmlFor="">Your Email</label>
-                                <input type="text" />
+                                <label htmlFor="email">Your Email</label>
+                                <input
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    onChange={changeInput}
+                                />
                             </div>
                             <div className="form__control">
-                                <label htmlFor="">Subject</label>
-                                <input type="text" />
+                                <label htmlFor="subject">Subject</label>
+                                <input
+                                    type="text"
+                                    id="subject"
+                                    name="subject"
+                                    placeholder="Subject"
+                                    onChange={changeInput}
+                                />
                             </div>
                             <div className="form__control">
-                                <label htmlFor="">Message</label>
-                                <textarea name="" />
+                                <label htmlFor="message">Message</label>
+                                <textarea
+                                    id="subject"
+                                    name="message"
+                                    placeholder="Message"
+                                    onChange={changeInput}
+                                />
                             </div>
                             <div className="form__control">
                                 <button className="beauty">Send</button>

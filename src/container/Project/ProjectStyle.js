@@ -46,8 +46,11 @@ export const Style = styled.div`
                     cursor: auto;
                     .contain {
                         width: 70%;
-                        height: 400px;
+                        /* padding: 2rem; */
+                        height: 60%;
+                        min-height: 400px;
                         background-color: #fff;
+                        z-index: 10000;
                         overflow-y: auto;
                         margin-bottom: 100px;
                         padding: 3rem;
