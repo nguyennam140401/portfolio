@@ -16,7 +16,7 @@ const Skills = () => {
             <div className="section skill" id="skill">
                 <div className="skill__title">Skills</div>
                 <div className="skill__container">
-                    <div className="skill__container--item">
+                    <div className="skill__container--item animation animation-top">
                         <div className="icon">
                             <RiPagesLine></RiPagesLine>
                         </div>
@@ -43,7 +43,10 @@ const Skills = () => {
                             <MdKeyboardArrowDown></MdKeyboardArrowDown>
                         </div>
                     </div>
-                    <div className="skill__container--item">
+                    <div
+                        className="skill__container--item animation animation-top"
+                        data-delay="1"
+                    >
                         <div className="icon">
                             <RiDatabase2Line></RiDatabase2Line>
                         </div>
@@ -69,7 +72,10 @@ const Skills = () => {
                             <MdKeyboardArrowDown></MdKeyboardArrowDown>
                         </div>
                     </div>
-                    <div className="skill__container--item">
+                    <div
+                        className="skill__container--item animation animation-top"
+                        data-delay="2"
+                    >
                         <div className="icon">
                             <MdOutlineDesignServices></MdOutlineDesignServices>
                         </div>

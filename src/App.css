@@ -157,20 +157,22 @@ button.beauty svg {
 }
 .animation {
     transition: 0.5s linear;
+    position: relative;
 }
 .animation-left {
     opacity: 0;
-    transform: translateX(-100px);
+    left: -100px;
 }
 .animation-right {
     opacity: 0;
-    transform: translateX(100px);
+    left: 100px;
 }
 .animation-top {
     opacity: 0;
-    transform: translateY(100px);
+    top: 100px;
 }
-.animation.active {
+.animation.animation-start {
     opacity: 1;
-    transform: translate(0);
+    top: 0;
+    left: 0;
 }

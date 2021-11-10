@@ -27,7 +27,7 @@ const Contact = () => {
             <div className="section contact" id="contact">
                 <div className="contact__title">Contact</div>
                 <div className="contact__container">
-                    <div className="contact__container--location">
+                    <div className="contact__container--location animation animation-left">
                         <div className="location__item">
                             <div className="icon">
                                 <HiOutlineLocationMarker></HiOutlineLocationMarker>
@@ -59,12 +59,12 @@ const Contact = () => {
                                 width="500"
                                 height="350"
                                 style={{ border: 'none' }}
-                                allowfullscreen=""
+                                allowFullScreen=""
                                 loading="lazy"
                             />
                         </div>
                     </div>
-                    <div className="contact__container--form">
+                    <div className="contact__container--form animation animation-right">
                         <form onSubmit={submit}>
                             <div className="form__control">
                                 <label htmlFor="name">Your Name</label>

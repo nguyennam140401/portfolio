@@ -15,12 +15,7 @@ const Project = () => {
             })
         })
     })
-    // const showDetail = (e) => {
-    //     console.log(e.target)
-    //     if (!e.target.classList.contains('active')) {
-    //         e.target.classList.add('active')
-    //     }
-    // }
+
     const hiddenDetail = () => {
         document
             .querySelector('.project__container--item.active')
@@ -31,7 +26,7 @@ const Project = () => {
             <div className="section project" id="project">
                 <div className="project__title">Project</div>
                 <div className="project__container">
-                    <div className="project__container--item ">
+                    <div className="project__container--item animation animation-top ">
                         <div className="item__img">
                             <img src={WeatherApp} alt="Weather App" />
                         </div>
@@ -69,7 +64,10 @@ const Project = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="project__container--item ">
+                    <div
+                        className="project__container--item animation animation-top "
+                        data-delay="1"
+                    >
                         <div className="item__img">
                             <img src={TodoApp} alt="Weather App" />
                         </div>

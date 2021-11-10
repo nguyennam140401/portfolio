@@ -31,14 +31,20 @@ function App() {
                 }
             })
             listAnimation.forEach((item) => {
+                if (item.getAttribute('data-delay')) {
+                    let timeDelay = item.getAttribute('data-delay')
+
+                    item.style.transitionDelay = timeDelay * 0.1 + 's'
+                }
                 if (
                     item.getBoundingClientRect().top <
                     window.outerHeight - 150
                 ) {
-                    item.classList.add('active')
+                    item.classList.add('animation-start')
                 }
             })
         })
+        return () => window.removeEventListener('scroll')
     }, [])
     return (
         <div className="App">

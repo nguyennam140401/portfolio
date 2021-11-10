@@ -40,7 +40,7 @@ export const Style = styled.div`
                     background-color: rgba(0, 0, 0, 0.1);
                     top: 0;
                     left: 0;
-
+                    z-index: var(--z-modal);
                     justify-content: center;
                     align-items: center;
                     cursor: auto;

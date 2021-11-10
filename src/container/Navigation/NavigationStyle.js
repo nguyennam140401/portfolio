@@ -43,13 +43,17 @@ export const Style = styled.div`
             top: 0;
             height: max-content;
             /* width: 100%; */
-            ul {
-                display: flex;
-                width: 100%;
-                li {
-                    padding: 0 20px;
-                    a {
-                        font-size: var(--h2-font-size);
+            .nav {
+                &_list {
+                    ul {
+                        display: flex;
+                        width: 100%;
+                        li {
+                            padding: 0 20px;
+                            a {
+                                font-size: var(--h2-font-size);
+                            }
+                        }
                     }
                 }
             }

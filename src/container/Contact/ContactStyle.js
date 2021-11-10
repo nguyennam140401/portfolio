@@ -12,6 +12,9 @@ export const Style = styled.div`
             display: block;
             &--location {
                 margin-bottom: 1.5rem;
+
+                padding-right: 0;
+                margin-right: 0;
                 .location__item {
                     display: flex;
                     margin-bottom: 1rem;
@@ -21,6 +24,9 @@ export const Style = styled.div`
                         color: var(--first-color-alt);
                         font-size: 2rem;
                     }
+                }
+                iframe {
+                    width: 100%;
                 }
             }
             &--form {
@@ -51,6 +57,7 @@ export const Style = styled.div`
                 display: flex;
                 &--location {
                     flex: 1;
+                    margin-right: 1.5rem;
                 }
                 &--form {
                     flex: 1;
