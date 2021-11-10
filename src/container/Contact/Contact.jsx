@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Style } from './ContactStyle'
+import axios from 'axios'
 import {
     HiOutlineLocationMarker,
     HiOutlineMail,
@@ -21,6 +22,11 @@ const Contact = () => {
     const submit = (e) => {
         e.preventDefault()
         console.log(formDataState)
+        axios.post('http://localhost:5000/sendmail', {
+            to: formDataState.email,
+            subject: formDataState.subject,
+            message: formDataState.message,
+        })
     }
     return (
         <Style>
