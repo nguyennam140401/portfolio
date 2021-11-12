@@ -1,108 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Style } from './SetProfilePageStyle'
 import { AiFillPlusCircle } from 'react-icons/ai'
+import BoxAddSkill from '../components/BoxAddSkill/BoxAddSkill'
+import BoxAddEducation from '../components/BoxAddEducation/BoxAddEducation'
+import BoxAddProject from '../components/BoxAddProject/BoxAddProject'
+import { UserContext } from '../context/UserContext'
 const SetProfilePage = () => {
-    const [formDataState, setFormDataState] = useState({
-        name: '',
-        job: '',
-        description: '',
-        linkFb: '',
-        linkGithub: '',
-        linkTweet: '',
-        linkYouTube: '',
-        birthday: '',
-        phone: '',
-        email: '',
-    })
-    const [listEducation, setListEducation] = useState([
-        {
-            id: 1,
-            title: 'bla blabl',
-            timeStart: '2019-12-12',
-            timeEnd: null,
-        },
-    ])
-    const [listSkill, setListSkill] = useState([
-        {
-            id: 1,
-            title: 'haha',
-            time: null,
-            detail: ['bla bla '],
-        },
-    ])
-    const changeInput = (e) => {
-        const field = e.target.name
-        const value = e.target.value
-        setFormDataState({ ...formDataState, [field]: value })
-    }
-    const boxEducation = (data) => {
-        return (
-            <div className="form__control">
-                <input type="text" value={data.title} placeholder="Làm gì?" />
-                <input
-                    type="date"
-                    value={data.timeStart}
-                    placeholder="Bắt đầu"
-                />
-                <input
-                    type="date"
-                    value={data.timeEnd}
-                    placeholder="Kết thúc"
-                />
-            </div>
-        )
-    }
-    const boxSkill = (data) => {
-        return (
-            <div className="form__control">
-                <input
-                    type="text"
-                    value={data.title}
-                    placeholder="Frontend, backend...."
-                />
-                <input
-                    type="text"
-                    value={data.time}
-                    placeholder="Thời gian học"
-                />
-                <div className="form__control--detail">
-                    <h4>Những gì học được</h4>
-                    {data.detail.map((item) => {
-                        return (
-                            <input
-                                type="text"
-                                placeholder="Ngôn ngữ, thư viện,..."
-                                value={item}
-                            />
-                        )
-                    })}
-                    <input type="text" placeholder="Ngôn ngữ , thư viện, ..." />
-                    <AiFillPlusCircle></AiFillPlusCircle>
-                </div>
-            </div>
-        )
-    }
-    const generateID = function () {
-        return Math.random().toString(36).substr(2, 9)
-    }
-    const handleAddEducation = () => {
-        const eduItem = {
-            id: generateID(),
-            title: '',
-            timeStart: null,
-            timeEnd: null,
-        }
-        setListEducation([...listEducation, eduItem])
-    }
-    const handleAddSkill = () => {
-        const skillItem = {
-            id: generateID(),
-            title: '',
-            time: null,
-            detail: [],
-        }
-        setListSkill([...listSkill, skillItem])
-    }
+    const {
+        formDataState,
+        listSkill,
+        listEducation,
+        handleAddSkill,
+        handleAddEducation,
+        changeInput,
+        listProject,
+        handleAddProject,
+    } = useContext(UserContext)
     return (
         <Style>
             <div className="set-profile">
@@ -116,6 +29,7 @@ const SetProfilePage = () => {
                                 id="name"
                                 name="name"
                                 placeholder=" Name"
+                                value={formDataState.name}
                                 onChange={changeInput}
                             />
                         </div>
@@ -125,6 +39,7 @@ const SetProfilePage = () => {
                                 type="text"
                                 id="job"
                                 name="job"
+                                value={formDataState.job}
                                 placeholder="User Name"
                                 onChange={changeInput}
                             />
@@ -136,6 +51,7 @@ const SetProfilePage = () => {
                             <textarea
                                 type="text"
                                 id="description"
+                                value={formDataState.description}
                                 name="description"
                                 placeholder="Giới thiệu bản thân"
                                 onChange={changeInput}
@@ -147,6 +63,7 @@ const SetProfilePage = () => {
                                 type="text"
                                 id="linkFb"
                                 name="linkFb"
+                                value={formDataState.linkFb}
                                 placeholder="Facebook"
                                 onChange={changeInput}
                             />
@@ -155,6 +72,7 @@ const SetProfilePage = () => {
                             <label htmlFor="linkGithub">Link github</label>
                             <input
                                 type="text"
+                                value={formDataState.linkGithub}
                                 id="linkGithub"
                                 name="linkGithub"
                                 placeholder="Link github"
@@ -166,26 +84,69 @@ const SetProfilePage = () => {
                             <input
                                 type="text"
                                 id="linkTweet"
+                                value={formDataState.linkTweet}
                                 name="linkTweet"
                                 placeholder="Tweet"
                                 onChange={changeInput}
                             />
                         </div>
-
                         <div className="form__control">
                             <label htmlFor="birthday">Ngày sinh</label>
                             <input
                                 type="date"
                                 id="birthday"
+                                value={formDataState.birthday}
                                 name="birthday"
                                 // placeholder="User Name"
+                                onChange={changeInput}
+                            />
+                        </div>
+                        <div className="form__control">
+                            <label htmlFor="birthday">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                value={formDataState.email}
+                                name="email"
+                                placeholder="User Email"
+                                onChange={changeInput}
+                            />
+                        </div>
+                        <div className="form__control">
+                            <label htmlFor="phone">Số điện thoại</label>
+                            <input
+                                type="number"
+                                id="phone"
+                                value={formDataState.phone}
+                                name="phone"
+                                placeholder="012345678"
+                                onChange={changeInput}
+                            />
+                        </div>
+                        <div className="form__control">
+                            <label htmlFor="CV">CV</label>
+                            <input
+                                type="file"
+                                id="CV"
+                                value={formDataState.CV}
+                                name="CV"
+                                onChange={changeInput}
+                            />
+                        </div>
+                        <div className="form__control">
+                            <label htmlFor="avatar">Ảnh đại diện</label>
+                            <input
+                                type="file"
+                                id="avatar"
+                                value={formDataState.avatar}
+                                name="avatar"
                                 onChange={changeInput}
                             />
                         </div>
                         <h2>Học tập</h2>
                         <div className="form__education">
                             {listEducation.map((item) => {
-                                return boxEducation(item)
+                                return <BoxAddEducation data={item} />
                             })}
                             <AiFillPlusCircle
                                 onClick={handleAddEducation}
@@ -194,12 +155,22 @@ const SetProfilePage = () => {
                         <h2>Kĩ năng</h2>
                         <div className="form__education">
                             {listSkill.map((item) => {
-                                return boxSkill(item)
+                                return <BoxAddSkill data={item} />
                             })}
                             <AiFillPlusCircle
                                 onClick={handleAddSkill}
                             ></AiFillPlusCircle>
                         </div>
+                        <h2>Project</h2>
+                        <div className="form__education">
+                            {listProject.map((item) => {
+                                return <BoxAddProject data={item} />
+                            })}
+                            <AiFillPlusCircle
+                                onClick={handleAddProject}
+                            ></AiFillPlusCircle>
+                        </div>
+                        <button className="beauty">Cập nhật</button>
                     </form>
                 </div>
             </div>

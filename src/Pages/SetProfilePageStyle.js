@@ -50,6 +50,13 @@ export const Style = styled.div`
                         font-size: 2rem;
                     }
                 }
+                span {
+                    background-color: var(--first-color-alt);
+                    color: #fff;
+                    padding: 0.1rem 0.5rem;
+                    margin: 0.25rem 0.25rem 0.25rem 0;
+                    display: inline-block;
+                }
             }
         }
     }
