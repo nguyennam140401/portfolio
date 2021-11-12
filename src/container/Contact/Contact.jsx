@@ -19,14 +19,21 @@ const Contact = () => {
         const value = e.target.value
         setFormDataState({ ...formDataState, [field]: value })
     }
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault()
         console.log(formDataState)
-        axios.post('http://localhost:5000/sendmail', {
+        const res = await axios.post('http://localhost:5000/sendmail', {
             to: formDataState.email,
             subject: formDataState.subject,
             message: formDataState.message,
         })
+
+        if (res.data.success) {
+            alert('Cám ơn bạn đã gửi liên hệ')
+            setFormDataState({ name: '', email: '', subject: '', message: '' })
+        } else {
+            alert('Xin lỗi có vấn đề trong quá trình gửi')
+        }
     }
     return (
         <Style>
