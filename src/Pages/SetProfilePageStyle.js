@@ -13,6 +13,7 @@ export const Style = styled.div`
             .form__control {
                 margin-bottom: 1.5rem;
                 font-size: 1.3rem;
+                position: relative;
                 label {
                     display: block;
                     margin-bottom: 0.5rem;
@@ -25,6 +26,14 @@ export const Style = styled.div`
                     font-size: 1.3rem;
                     width: 100%;
                     border-radius: 0.5rem;
+                }
+                svg {
+                    position: absolute;
+                    left: 100%;
+                    top: 0;
+                    transform: translate(-50%, -50%);
+                    color: red !important;
+                    font-size: 2rem !important;
                 }
             }
             .form__education {
@@ -41,14 +50,14 @@ export const Style = styled.div`
                     cursor: pointer;
                 }
                 .form__control--detail {
-                    position: relative;
-                    svg {
+                    /* position: relative; */
+                    /* svg {
                         position: absolute;
                         top: 100%;
                         left: 50%;
                         transform: translateX(-50%);
                         font-size: 2rem;
-                    }
+                    } */
                 }
                 span {
                     background-color: var(--first-color-alt);

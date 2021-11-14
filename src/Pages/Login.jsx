@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Style } from './LoginStyle'
 import { Link } from 'react-router-dom'
 import Progess from '../components/Progess'
-import { login } from '../api'
+// import { login } from '../api'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 const Login = () => {
     const [formDataState, setFormDataState] = useState({
         username: '',
         password: '',
     })
     const [isLoading, setIsLoading] = useState(false)
+    const { login } = useContext(AuthContext)
     const navigate = useNavigate()
     const changeInput = (e) => {
         const field = e.target.name
@@ -20,11 +22,21 @@ const Login = () => {
         e.preventDefault()
         setIsLoading(true)
         const res = await login(formDataState)
-        if (res.success) {
-            alert('Đăng nhập thành công')
-            navigate('/')
-        }
         setIsLoading(false)
+        console.log(res)
+        if (res.success) {
+            console.log(res)
+            alert('Đăng nhập thành công')
+            if (res.user.isNew) {
+                navigate('/setProfile')
+            } else {
+                navigate('/')
+            }
+        } else {
+            alert('Đăng nhập thất bại')
+        }
+
+        return function cleanup() {}
     }
     return (
         <Style>

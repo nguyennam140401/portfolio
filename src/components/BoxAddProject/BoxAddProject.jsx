@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 // import { AiFillPlusCircle } from 'react-icons/ai'
 import { UserContext } from '../../context/UserContext'
-
+import { FaTimesCircle } from 'react-icons/fa'
 const BoxAddProject = ({ data }) => {
-    const { changeInforProject } = useContext(UserContext)
+    const { changeInforProject, removeProjectItem } = useContext(UserContext)
     return (
         <div className="form__control">
             <input
@@ -39,12 +39,12 @@ const BoxAddProject = ({ data }) => {
                         changeInforProject(event, data.id)
                     }}
                 ></textarea>
-                {/* <AiFillPlusCircle
-                    onClick={() => {
-                        handleAddTechProject(data.id)
-                    }}
-                ></AiFillPlusCircle> */}
             </div>
+            <FaTimesCircle
+                onClick={() => {
+                    removeProjectItem(data.id)
+                }}
+            ></FaTimesCircle>
         </div>
     )
 }

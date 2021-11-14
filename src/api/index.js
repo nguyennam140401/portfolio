@@ -16,3 +16,7 @@ export const getProfile = async (name) => {
     const res = await axios.get(`${uri}/user`, name)
     return res.data
 }
+export const setupProfile = async (data) => {
+    const res = await axios.post(`${uri}/auth`, data)
+    return res.data
+}

@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
-import { AiFillPlusCircle } from 'react-icons/ai'
 import { UserContext } from '../../context/UserContext'
-
+import { FaTimesCircle } from 'react-icons/fa'
 const BoxAddSkill = ({ data }) => {
-    const { handleAddDetailSkill, changeInforSkill } = useContext(UserContext)
+    const { changeInforSkill, removeSkillItem } = useContext(UserContext)
     return (
         <div className="form__control">
             <input
@@ -41,11 +40,11 @@ const BoxAddSkill = ({ data }) => {
                     }}
                 ></textarea>
 
-                <AiFillPlusCircle
+                <FaTimesCircle
                     onClick={() => {
-                        handleAddDetailSkill(data.id)
+                        removeSkillItem(data.id)
                     }}
-                ></AiFillPlusCircle>
+                ></FaTimesCircle>
             </div>
         </div>
     )

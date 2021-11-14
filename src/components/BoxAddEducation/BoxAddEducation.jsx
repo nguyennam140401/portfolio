@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
-// import { AiFillPlusCircle } from 'react-icons/ai'
+import { FaTimesCircle } from 'react-icons/fa'
 const BoxAddEducation = ({ data }) => {
-    const { changeInforEducation } = useContext(UserContext)
+    const { changeInforEducation, removeEduItem } = useContext(UserContext)
     return (
         <div className="form__control">
             <input
@@ -26,6 +26,11 @@ const BoxAddEducation = ({ data }) => {
                 name="timeEnd"
                 onChange={(event) => changeInforEducation(event, data.id)}
             />
+            <FaTimesCircle
+                onClick={() => {
+                    removeEduItem(data.id)
+                }}
+            ></FaTimesCircle>
         </div>
     )
 }

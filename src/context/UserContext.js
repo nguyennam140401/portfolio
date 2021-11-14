@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react'
 import lang from 'lodash/lang'
+import { setupProfile } from '../api'
 export const UserContext = createContext()
 
 const UserContextProvider = ({ children }) => {
@@ -16,6 +17,8 @@ const UserContextProvider = ({ children }) => {
         email: '',
         CV: '',
         avatar: '',
+        dataCV: '',
+        dataAvatar: '',
     })
     const [listEducation, setListEducation] = useState([
         {
@@ -39,14 +42,43 @@ const UserContextProvider = ({ children }) => {
             id: 1,
             title: '',
             img: '',
+            dataImg: '',
             description: '',
             tech: [1, 2, 3, 4],
             textTech: '1,2,3,4',
         },
     ])
+    const toBase64 = (file) =>
+        new Promise((resolve, reject) => {
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = () => resolve(reader.result)
+            reader.onerror = (error) => reject(error)
+        })
     const changeInput = (e) => {
         const field = e.target.name
         const value = e.target.value
+        if (field === 'CV') {
+            toBase64(e.target.files[0]).then((data) => {
+                setFormDataState({
+                    ...formDataState,
+                    [field]: value,
+                    dataCV: data,
+                })
+                return
+            })
+        }
+        if (field === 'avatar') {
+            toBase64(e.target.files[0]).then((data) => {
+                // item.dataAvatar = data
+                setFormDataState({
+                    ...formDataState,
+                    [field]: value,
+                    dataAvatar: data,
+                })
+                return
+            })
+        }
         setFormDataState({ ...formDataState, [field]: value })
     }
 
@@ -83,36 +115,37 @@ const UserContextProvider = ({ children }) => {
         }
         setListSkill([...listSkill, skillItem])
     }
-    const handleAddDetailSkill = (id) => {
-        const newList = lang.cloneDeep(listSkill)
-        newList.forEach((item) => {
-            if (item.id === id) item.detail.push('')
-        })
-        setListSkill(newList)
-    }
+
     const handleAddProject = () => {
         const projectItem = {
             id: generateID(),
             title: '',
             img: '',
+            dataImg: '',
             description: '',
             tech: [],
+            textTech: '',
         }
         setListProject([...listProject, projectItem])
     }
 
-    const changeInforProject = (event, id) => {
+    const changeInforProject = async (event, id) => {
         const field = event.target.name
         const value = event.target.value
         let newList = lang.cloneDeep(listProject)
         newList = newList.map((item) => {
             if (item.id === id) {
                 item = { ...item, [field]: value }
-
                 item.tech = item.textTech.trim().split(',')
+                if (field === 'img') {
+                    toBase64(event.target.files[0]).then((data) => {
+                        item.dataImg = data
+                    })
+                }
             }
             return item
         })
+        console.log(newList)
         setListProject(newList)
     }
     const changeInforSkill = (event, id) => {
@@ -129,6 +162,50 @@ const UserContextProvider = ({ children }) => {
         })
         setListSkill(newList)
     }
+
+    const removeProjectItem = (id) => {
+        console.log(id)
+        let newList = lang.cloneDeep(listProject)
+        newList.forEach((item, idx) => {
+            if (item.id === id) {
+                console.log(idx)
+                newList.splice(idx, 1)
+            }
+        })
+        console.log(newList)
+        setListProject(newList)
+    }
+    const removeSkillItem = (id) => {
+        let newList = lang.cloneDeep(listSkill)
+        newList.forEach((item, idx) => {
+            if (item.id === id) {
+                newList.splice(idx, 1)
+            }
+        })
+
+        setListSkill(newList)
+    }
+    const removeEduItem = (id) => {
+        let newList = lang.cloneDeep(listEducation)
+        newList.forEach((item, idx) => {
+            if (item.id === id) {
+                newList.splice(idx, 1)
+            }
+        })
+
+        setListEducation(newList)
+    }
+    const updateProfile = async (e) => {
+        e.preventDefault()
+        const userInfor = {
+            ...formDataState,
+            skills: [...listSkill],
+            educations: [...listEducation],
+            project: [...listProject],
+        }
+        console.log(userInfor)
+        const result = await setupProfile(userInfor)
+    }
     const data = {
         formDataState,
         listSkill,
@@ -136,13 +213,15 @@ const UserContextProvider = ({ children }) => {
         handleAddSkill,
         handleAddEducation,
         changeInput,
-        handleAddDetailSkill,
+        removeSkillItem,
+        removeProjectItem,
         listProject,
         handleAddProject,
-        // handleAddTechProject,
         changeInforEducation,
         changeInforProject,
         changeInforSkill,
+        updateProfile,
+        removeEduItem,
     }
     return <UserContext.Provider value={data}>{children}</UserContext.Provider>
 }
