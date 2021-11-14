@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import { Style } from './LoginStyle'
 import { Link } from 'react-router-dom'
 import Progess from '../components/Progess'
-// import { login } from '../api'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 const Login = () => {
@@ -11,12 +10,18 @@ const Login = () => {
         password: '',
     })
     const [isLoading, setIsLoading] = useState(false)
-    const { login } = useContext(AuthContext)
+    const {
+        login,
+        authState: { isAuthenticated },
+    } = useContext(AuthContext)
     const navigate = useNavigate()
     const changeInput = (e) => {
         const field = e.target.name
         const value = e.target.value
         setFormDataState({ ...formDataState, [field]: value })
+    }
+    if (isAuthenticated) {
+        navigate('/')
     }
     const handleSubmit = async (e) => {
         e.preventDefault()

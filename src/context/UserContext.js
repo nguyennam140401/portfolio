@@ -20,34 +20,9 @@ const UserContextProvider = ({ children }) => {
         dataCV: '',
         dataAvatar: '',
     })
-    const [listEducation, setListEducation] = useState([
-        {
-            id: 1,
-            title: 'bla blabl',
-            timeStart: '2019-12-12',
-            timeEnd: null,
-        },
-    ])
-    const [listSkill, setListSkill] = useState([
-        {
-            id: 1,
-            title: 'haha',
-            time: null,
-            detail: [1, 2, 3, 4, 5, 6],
-            textDetail: '1,2,3,4,5,6',
-        },
-    ])
-    const [listProject, setListProject] = useState([
-        {
-            id: 1,
-            title: '',
-            img: '',
-            dataImg: '',
-            description: '',
-            tech: [1, 2, 3, 4],
-            textTech: '1,2,3,4',
-        },
-    ])
+    const [listEducation, setListEducation] = useState([])
+    const [listSkill, setListSkill] = useState([])
+    const [listProject, setListProject] = useState([])
     const toBase64 = (file) =>
         new Promise((resolve, reject) => {
             const reader = new FileReader()
@@ -222,6 +197,10 @@ const UserContextProvider = ({ children }) => {
         changeInforSkill,
         updateProfile,
         removeEduItem,
+        setListEducation,
+        setListProject,
+        setListSkill,
+        setFormDataState,
     }
     return <UserContext.Provider value={data}>{children}</UserContext.Provider>
 }

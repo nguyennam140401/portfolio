@@ -40,14 +40,14 @@ const AuthContextProvider = ({ children }) => {
         }
     }
     const logout = () => {
-        localStorage.removeItem('tokenUser')
+        localStorage.removeItem('authToken')
         setAuthToken(null)
         setAuthState({
             isAuthenticated: false,
             token: null,
         })
     }
-    const data = { login, logout }
+    const data = { login, logout, authState }
     return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>
 }
 export default AuthContextProvider

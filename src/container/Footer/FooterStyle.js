@@ -8,6 +8,15 @@ export const Style = styled.div`
         padding: 2rem 0;
         font-size: var(--h3-font-size);
         font-weight: var(--font-semi-bold);
+        position: relative;
+        &_option {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--first-color);
+        }
     }
     margin-bottom: 157px;
     @media (min-width: 768px) {

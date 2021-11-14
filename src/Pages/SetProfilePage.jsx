@@ -6,6 +6,7 @@ import BoxAddEducation from '../components/BoxAddEducation/BoxAddEducation'
 import BoxAddProject from '../components/BoxAddProject/BoxAddProject'
 import { UserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
+import Footer from '../container/Footer/Footer'
 import { AuthContext } from '../context/AuthContext'
 const SetProfilePage = () => {
     const {
@@ -41,6 +42,7 @@ const SetProfilePage = () => {
                                 <label htmlFor="name">Tên hiển thị</label>
                                 <input
                                     type="text"
+                                    required
                                     id="name"
                                     name="name"
                                     placeholder=" Name"
@@ -52,6 +54,7 @@ const SetProfilePage = () => {
                                 <label htmlFor="job">Công việc</label>
                                 <input
                                     type="text"
+                                    required
                                     id="job"
                                     name="job"
                                     value={formDataState.job}
@@ -65,6 +68,7 @@ const SetProfilePage = () => {
                                 </label>
                                 <textarea
                                     type="text"
+                                    required
                                     id="description"
                                     value={formDataState.description}
                                     name="description"
@@ -75,7 +79,6 @@ const SetProfilePage = () => {
                             <div className="form__control">
                                 <label htmlFor="linkFb">Link Facebook</label>
                                 <input
-                                    type="text"
                                     id="linkFb"
                                     name="linkFb"
                                     value={formDataState.linkFb}
@@ -109,6 +112,7 @@ const SetProfilePage = () => {
                                 <label htmlFor="birthday">Ngày sinh</label>
                                 <input
                                     type="date"
+                                    required
                                     id="birthday"
                                     value={formDataState.birthday}
                                     name="birthday"
@@ -121,6 +125,7 @@ const SetProfilePage = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    required
                                     value={formDataState.email}
                                     name="email"
                                     placeholder="User Email"
@@ -131,6 +136,7 @@ const SetProfilePage = () => {
                                 <label htmlFor="phone">Số điện thoại</label>
                                 <input
                                     type="number"
+                                    required
                                     id="phone"
                                     value={formDataState.phone}
                                     name="phone"
@@ -144,6 +150,7 @@ const SetProfilePage = () => {
                                     type="file"
                                     id="CV"
                                     value={formDataState.CV}
+                                    required
                                     name="CV"
                                     onChange={changeInput}
                                 />
@@ -154,6 +161,7 @@ const SetProfilePage = () => {
                                     type="file"
                                     id="avatar"
                                     value={formDataState.avatar}
+                                    required
                                     name="avatar"
                                     onChange={changeInput}
                                 />
@@ -190,8 +198,9 @@ const SetProfilePage = () => {
                     </div>
                 </div>
             ) : (
-                <div>hahah</div>
+                <div></div>
             )}
+            <Footer></Footer>
         </Style>
     )
 }

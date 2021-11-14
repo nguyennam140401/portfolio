@@ -12,10 +12,10 @@ import { useParams } from 'react-router-dom'
 const ProfilePage = () => {
     const params = useParams()
     console.log(params.id)
-    useEffect(() => {
+    const eventScroll = () => {
         const listSection = document.querySelectorAll('.section')
         const listAnimation = document.querySelectorAll('.animation')
-        window.addEventListener('scroll', () => {
+        if (listSection) {
             listSection.forEach((section) => {
                 if (section.getBoundingClientRect().top <= 100) {
                     document
@@ -32,6 +32,8 @@ const ProfilePage = () => {
                     })
                 }
             })
+        }
+        if (listAnimation) {
             listAnimation.forEach((item) => {
                 if (item.getAttribute('data-delay')) {
                     let timeDelay = item.getAttribute('data-delay')
@@ -45,9 +47,15 @@ const ProfilePage = () => {
                     item.classList.add('animation-start')
                 }
             })
-        })
-        return () => window.removeEventListener('scroll')
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', eventScroll)
+        return () => {
+            window.removeEventListener('scroll', eventScroll)
+        }
     }, [])
+
     return (
         <div className="App">
             <Navigation />
