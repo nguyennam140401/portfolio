@@ -23,7 +23,7 @@ const AuthContextProvider = ({ children }) => {
             const res = await api.login(data)
             if (res.success) {
                 console.log(res)
-                setAuthToken(res.accessToken)
+                setAuthToken(res.acessToken)
                 localStorage.setItem('authToken', res.acessToken)
                 setAuthState({
                     isAuthenticated: true,

@@ -28,6 +28,15 @@ const SetProfilePage = () => {
             return navigate('/login')
         }
     }, [])
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        const res = await updateProfile()
+        if (res.success) {
+            navigate(`/${res.user}`)
+        } else {
+            alert('Có lỗi ')
+        }
+    }
     return (
         <Style>
             {localStorage.getItem('authToken') ? (
@@ -35,7 +44,7 @@ const SetProfilePage = () => {
                     <div className="title">Edit Your Profile</div>
                     <div className="form">
                         <form
-                            onSubmit={updateProfile}
+                            onSubmit={handleSubmit}
                             enctype="multipart/form-data"
                         >
                             <div className="form__control">

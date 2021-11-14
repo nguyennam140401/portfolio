@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react'
 import lang from 'lodash/lang'
 import { setupProfile } from '../api'
+
 export const UserContext = createContext()
 
 const UserContextProvider = ({ children }) => {
@@ -170,8 +171,7 @@ const UserContextProvider = ({ children }) => {
 
         setListEducation(newList)
     }
-    const updateProfile = async (e) => {
-        e.preventDefault()
+    const updateProfile = async () => {
         const userInfor = {
             ...formDataState,
             skills: [...listSkill],
@@ -180,6 +180,8 @@ const UserContextProvider = ({ children }) => {
         }
         console.log(userInfor)
         const result = await setupProfile(userInfor)
+        console.log(result)
+        return result
     }
     const data = {
         formDataState,
