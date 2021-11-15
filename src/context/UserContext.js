@@ -183,6 +183,12 @@ const UserContextProvider = ({ children }) => {
         console.log(result)
         return result
     }
+    const changeProfile = (data) => {
+        setFormDataState(data)
+        setListSkill(data.listSkill)
+        setListProject(data.listProject)
+        setListEducation(data.listEdu)
+    }
     const data = {
         formDataState,
         listSkill,
@@ -203,6 +209,7 @@ const UserContextProvider = ({ children }) => {
         setListProject,
         setListSkill,
         setFormDataState,
+        changeProfile,
     }
     return <UserContext.Provider value={data}>{children}</UserContext.Provider>
 }

@@ -25,6 +25,7 @@ const AuthContextProvider = ({ children }) => {
                 console.log(res)
                 setAuthToken(res.acessToken)
                 localStorage.setItem('authToken', res.acessToken)
+                localStorage.setItem('username', res.user.username)
                 setAuthState({
                     isAuthenticated: true,
                     token: res.acessToken,
@@ -41,6 +42,7 @@ const AuthContextProvider = ({ children }) => {
     }
     const logout = () => {
         localStorage.removeItem('authToken')
+        localStorage.removeItem('username')
         setAuthToken(null)
         setAuthState({
             isAuthenticated: false,

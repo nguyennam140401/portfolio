@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Home from '../container/Home/Home'
 import Navigation from '../container/Navigation/Navigation'
 import Contact from '../container/Contact/Contact'
@@ -8,10 +8,12 @@ import Skills from '../container/Skills/Skills'
 import Education from '../container/Education/Education'
 import Footer from '../container/Footer/Footer'
 import { useParams } from 'react-router-dom'
-
+import { UserContext } from '../context/UserContext'
+import * as api from '../api'
 const ProfilePage = () => {
     const params = useParams()
-    console.log(params.id)
+    const { changeProfile } = useContext(UserContext)
+
     const eventScroll = () => {
         const listSection = document.querySelectorAll('.section')
         const listAnimation = document.querySelectorAll('.animation')
@@ -50,6 +52,12 @@ const ProfilePage = () => {
         }
     }
     useEffect(() => {
+        const solve = async () => {
+            const name = params.id || 'nam0x2001'
+            const userData = await api.getProfile(name)
+            changeProfile(userData.data)
+        }
+        solve()
         window.addEventListener('scroll', eventScroll)
         return () => {
             window.removeEventListener('scroll', eventScroll)

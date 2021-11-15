@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import Progess from '../components/Progess'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
+import { UserContext } from '../context/UserContext'
+import * as api from '../api'
 const Login = () => {
-    const [formDataState, setFormDataState] = useState({
+    const [formDataState, setFormDataStatee] = useState({
         username: '',
         password: '',
     })
@@ -14,11 +16,13 @@ const Login = () => {
         login,
         authState: { isAuthenticated },
     } = useContext(AuthContext)
+    const { changeProfile } = useContext(UserContext)
+    useContext(UserContext)
     const navigate = useNavigate()
     const changeInput = (e) => {
         const field = e.target.name
         const value = e.target.value
-        setFormDataState({ ...formDataState, [field]: value })
+        setFormDataStatee({ ...formDataState, [field]: value })
     }
     if (isAuthenticated) {
         navigate('/')
@@ -28,14 +32,17 @@ const Login = () => {
         setIsLoading(true)
         const res = await login(formDataState)
         setIsLoading(false)
-        console.log(res)
         if (res.success) {
             console.log(res)
+            const userData = await api.getProfile(res.user.username)
+            console.log(userData.data)
+
+            changeProfile(userData.data)
             alert('Đăng nhập thành công')
             if (res.user.isNew) {
                 navigate('/setProfile')
             } else {
-                navigate('/')
+                navigate(`/${userData.data.username}`)
             }
         } else {
             alert('Đăng nhập thất bại')

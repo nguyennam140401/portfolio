@@ -31,6 +31,7 @@ const SetProfilePage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         const res = await updateProfile()
+        console.log(res)
         if (res.success) {
             navigate(`/${res.user}`)
         } else {

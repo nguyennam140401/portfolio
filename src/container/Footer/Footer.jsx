@@ -17,9 +17,9 @@ const Footer = () => {
                         Logout
                     </div>
                 ) : (
-                    <a href="/login" className="footer_option">
+                    <Link to="/login" className="footer_option">
                         Tạo tài khoản cho riêng mình ?
-                    </a>
+                    </Link>
                 )}
             </div>
         </Style>
