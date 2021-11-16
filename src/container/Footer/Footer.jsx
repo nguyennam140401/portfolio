@@ -13,8 +13,9 @@ const Footer = () => {
             <div className="footer">
                 Made by VanNam
                 {isAuthenticated ? (
-                    <div onClick={logout} className="footer_option">
-                        Logout
+                    <div className="footer_option">
+                        <Link to="/setProfile">Chỉnh sửa tài khoản</Link>
+                        <div onClick={logout}>Logout</div>
                     </div>
                 ) : (
                     <Link to="/login" className="footer_option">

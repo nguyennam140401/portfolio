@@ -8,6 +8,7 @@ import { UserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../container/Footer/Footer'
 import { AuthContext } from '../context/AuthContext'
+import * as api from '../api'
 const SetProfilePage = () => {
     const {
         formDataState,
@@ -19,7 +20,9 @@ const SetProfilePage = () => {
         listProject,
         handleAddProject,
         updateProfile,
+        changeProfile,
     } = useContext(UserContext)
+
     const { authState: isAuthenticated } = useContext(AuthContext)
     const navigate = useNavigate()
     useEffect(() => {
@@ -27,6 +30,14 @@ const SetProfilePage = () => {
             console.log('ok')
             return navigate('/login')
         }
+        const solve = async () => {
+            const userData = await api.getProfile(
+                localStorage.getItem('username')
+            )
+            console.log(userData.data)
+            changeProfile(userData.data)
+        }
+        solve()
     }, [])
     const handleSubmit = async (event) => {
         event.preventDefault()

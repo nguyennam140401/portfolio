@@ -184,9 +184,12 @@ const UserContextProvider = ({ children }) => {
         return result
     }
     const changeProfile = (data) => {
-        setFormDataState(data)
+        setFormDataState({ ...data, avatar: '', CV: '' })
         setListSkill(data.listSkill)
-        setListProject(data.listProject)
+        const arrProject = data.listProject.map((item) => {
+            return { ...item, img: '' }
+        })
+        setListProject(arrProject)
         setListEducation(data.listEdu)
     }
     const data = {

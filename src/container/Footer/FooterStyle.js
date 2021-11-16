@@ -13,6 +13,7 @@ export const Style = styled.div`
             position: absolute;
             right: 1.5rem;
             top: 50%;
+            display: flex;
             transform: translateY(-50%);
             cursor: pointer;
             color: var(--first-color);
