@@ -1,8 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import WeatherApp from '../../assets/images/weather_app.png'
 import { Style } from './ProjectStyle'
 import TodoApp from '../../assets/images/todoapp.png'
+import ProjectItem from '../../components/ProjectItem/ProjectItem'
 const Project = () => {
+    const [listProject, setListProject] = useState([
+        {
+            name: 'Weather App',
+            img: WeatherApp,
+            description:
+                'Cho phép người dùng xem thời tiết hiện tại và dự báo cho 7 ngày tới',
+            tech: ['ReactJs'],
+            link: 'https://weather-app-namnv.netlify.app',
+        },
+        {
+            name: 'Todo App',
+            img: TodoApp,
+            description:
+                'Cho phép người dùng đăng nhập, thêm nhiệm vụ cần làm với các trạng thái(Hoàn thành, đang làm, chưa làm) kèm liên kết',
+            tech: ['ReactJs', 'NodeJs', 'MongoDB'],
+            link: 'https://namnv-todolist.netlify.app/',
+        },
+    ])
     useEffect(() => {
         const listProject = document.querySelectorAll(
             '.project__container--item'
@@ -26,7 +45,10 @@ const Project = () => {
             <div className="section project" id="project">
                 <div className="project__title">Project</div>
                 <div className="project__container">
-                    <div className="project__container--item animation animation-top ">
+                    {listProject.map((item, idx) => {
+                        return <ProjectItem data={item} key={idx} pos={idx} />
+                    })}
+                    {/* <div className="project__container--item animation animation-top ">
                         <div className="item__img">
                             <img src={WeatherApp} alt="Weather App" />
                         </div>
@@ -101,7 +123,7 @@ const Project = () => {
                                         <div className="tool">NodeJs</div>
                                     </div>
                                     <div className="tech__item">
-                                        <h3>Database End</h3>
+                                        <h3>Database</h3>
                                         <div className="tool">MongoDB</div>
                                     </div>
                                 </div>
@@ -114,7 +136,7 @@ const Project = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </Style>

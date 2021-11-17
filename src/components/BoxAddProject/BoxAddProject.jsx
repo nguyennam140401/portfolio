@@ -18,6 +18,7 @@ const BoxAddProject = ({ data }) => {
             <input
                 type="file"
                 value={data.img}
+                required
                 name="img"
                 onChange={(event) => {
                     changeInforProject(event, data.id)

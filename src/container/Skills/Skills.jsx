@@ -1,8 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RiPagesLine, RiDatabase2Line } from 'react-icons/ri'
 import { Style } from './SkillStyle'
 import { MdKeyboardArrowDown, MdOutlineDesignServices } from 'react-icons/md'
+import SkillItem from '../../components/SkillItem/SkillItem'
 const Skills = () => {
+    const [listSkill, setListSkill] = useState([
+        {
+            title: 'FrontEnd',
+            time: 'About 1 year',
+            detail: ['HTML', 'CSS', 'Javascript', 'Reactjs'],
+        },
+        {
+            title: 'FrontEnd',
+            time: 'About 1 year',
+            detail: ['HTML', 'CSS', 'Javascript', 'Reactjs'],
+        },
+        {
+            title: 'FrontEnd',
+            time: 'About 1 year',
+            detail: ['HTML', 'CSS', 'Javascript', 'Reactjs'],
+        },
+    ])
     useEffect(() => {
         const listSkills = document.querySelectorAll('.skill__container--item')
         listSkills.forEach((item) => {
@@ -16,7 +34,10 @@ const Skills = () => {
             <div className="section skill" id="skill">
                 <div className="skill__title">Skills</div>
                 <div className="skill__container">
-                    <div className="skill__container--item animation animation-top">
+                    {listSkill.map((item, idx) => {
+                        return <SkillItem data={item} key={idx} pos={idx} />
+                    })}
+                    {/* <div className="skill__container--item animation animation-top">
                         <div className="icon">
                             <RiPagesLine></RiPagesLine>
                         </div>
@@ -93,7 +114,7 @@ const Skills = () => {
                         <div className="option">
                             <MdKeyboardArrowDown></MdKeyboardArrowDown>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </Style>

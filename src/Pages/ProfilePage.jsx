@@ -9,8 +9,10 @@ import Education from '../container/Education/Education'
 import Footer from '../container/Footer/Footer'
 import { useParams } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
+import { useNavigate } from 'react-router-dom'
 import * as api from '../api'
 const ProfilePage = () => {
+    const navigate = useNavigate()
     const params = useParams()
     const { changeProfile } = useContext(UserContext)
 
@@ -53,9 +55,15 @@ const ProfilePage = () => {
     }
     useEffect(() => {
         const solve = async () => {
-            const name = params.id || 'nam0x2001'
-            const userData = await api.getProfile(name)
-            changeProfile(userData.data)
+            try {
+                const name = params.id || 'nam0x2001'
+                const userData = await api.getProfile(name)
+                console.log(userData)
+                changeProfile(userData.data)
+            } catch (error) {
+                navigate('/page/404')
+                console.log(error)
+            }
         }
         solve()
         window.addEventListener('scroll', eventScroll)

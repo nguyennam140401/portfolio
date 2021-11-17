@@ -10,6 +10,7 @@ import SetProfilePage from './Pages/SetProfilePage'
 import UserContextProvider from './context/UserContext'
 import AuthContextProvider from './context/AuthContext'
 import ProtectRouter from './router/ProtectRouter'
+import Page404 from './Pages/Page404'
 function App() {
     return (
         // <ProfilePage></ProfilePage>
@@ -25,6 +26,7 @@ function App() {
                         ></Route>
                         <Route path="/login" element={<Login />}></Route>
                         <Route path="/register" element={<Register />}></Route>
+                        <Route path="/page/404" element={<Page404 />}></Route>
                     </Routes>
                 </Router>
             </UserContextProvider>
