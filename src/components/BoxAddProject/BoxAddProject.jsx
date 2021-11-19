@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
 import { FaTimesCircle } from 'react-icons/fa'
 const BoxAddProject = ({ data }) => {
+    console.log(data)
     const { changeInforProject, removeProjectItem } = useContext(UserContext)
     return (
         <div className="form__control">
@@ -17,8 +18,8 @@ const BoxAddProject = ({ data }) => {
             />
             <input
                 type="file"
-                value={data.img}
-                required
+                // value={data.img}
+                required={!data.img}
                 name="img"
                 onChange={(event) => {
                     changeInforProject(event, data.id)
@@ -40,6 +41,15 @@ const BoxAddProject = ({ data }) => {
                         changeInforProject(event, data.id)
                     }}
                 ></textarea>
+                <input
+                    type="text"
+                    value={data.link}
+                    name="link"
+                    onChange={(event) => {
+                        changeInforProject(event, data.id)
+                    }}
+                    placeholder="Link to project"
+                />
             </div>
             <FaTimesCircle
                 onClick={() => {

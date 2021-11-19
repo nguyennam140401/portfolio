@@ -1,14 +1,15 @@
 import React from 'react'
 import { Style } from './EduStyle'
+import { MdOutlineSchool } from 'react-icons/md'
 const EduItem = ({ data, pos }) => {
     return pos % 2 === 0 ? (
         <Style className="education__data--item">
             <div className="data animation animation-left">
-                <h3>{data.work}</h3>
+                <h3>{data.title}</h3>
                 <p>{data.loaction}</p>
                 <span>
-                    <data.icon />
-                    {data.time}
+                    <MdOutlineSchool />
+                    {data.timeStart} đến {data.timeEnd}
                 </span>
             </div>
             <div className="line"></div>
@@ -19,11 +20,11 @@ const EduItem = ({ data, pos }) => {
             <div className=""></div>
             <div className="line"></div>
             <div className="data animation animation-right">
-                <h3>{data.work}</h3>
+                <h3>{data.title}</h3>
                 <p>{data.loaction}</p>
                 <span>
-                    <data.icon />
-                    {data.time}
+                    <MdOutlineSchool />
+                    {data.timeStart} đến {data.timeEnd}
                 </span>
             </div>
         </Style>

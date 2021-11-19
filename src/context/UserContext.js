@@ -9,6 +9,7 @@ const UserContextProvider = ({ children }) => {
         name: '',
         job: '',
         description: '',
+        address: '',
         linkFb: '',
         linkGithub: '',
         linkTweet: '',
@@ -101,6 +102,7 @@ const UserContextProvider = ({ children }) => {
             description: '',
             tech: [],
             textTech: '',
+            link: '',
         }
         setListProject([...listProject, projectItem])
     }
@@ -184,10 +186,10 @@ const UserContextProvider = ({ children }) => {
         return result
     }
     const changeProfile = (data) => {
-        setFormDataState({ ...data, avatar: '', CV: '' })
+        setFormDataState({ ...data })
         setListSkill(data.listSkill)
         const arrProject = data.listProject.map((item) => {
-            return { ...item, img: '' }
+            return { ...item }
         })
         setListProject(arrProject)
         setListEducation(data.listEdu)

@@ -1,23 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import AboutImg from '../../assets/images/about.jpg'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import { Style } from './AboutStyle'
 import CV from '../../assets/CV_My_CV.pdf'
 import { FiDownload } from 'react-icons/fi'
+import { UserContext } from '../../context/UserContext'
 const About = () => {
-    // const infor = {
-    //     address: 'Liên Hà, Đông Anh, Hà Nội',
-    //     email: 'nguyennam140401@gmail.com',
-    //     birthday: '14-04-2001',
-    //     phone: '0346663207',
-    // }
+    const { formDataState } = useContext(UserContext)
+    const uri = process.env.URI_API || 'http://localhost:5000'
     return (
         <Style>
             <div className="section about" id="about">
                 <div className="about__title">About</div>
                 <div className="about__container">
                     <div className="about__container--img animation animation-left">
-                        <img src={AboutImg} alt="" />
+                        <img
+                            src={`${uri}/${formDataState.avatar}`}
+                            alt="Avatar"
+                        />
                     </div>
                     <div className="about__container--infor animation animation-right">
                         <h2>Một số thông tin về mình</h2>
@@ -25,28 +25,33 @@ const About = () => {
                             <span>
                                 <MdKeyboardArrowRight /> Birthday:
                             </span>{' '}
-                            14-04-2001
+                            {formDataState.birthday}
                         </p>
                         <p className="infor-item">
                             <span>
                                 <MdKeyboardArrowRight /> Phone:
                             </span>{' '}
-                            0346663207
+                            {formDataState.phone}
                         </p>
                         <p className="infor-item">
                             <span>
                                 <MdKeyboardArrowRight /> Email:
                             </span>{' '}
-                            nguyennam140401@gmail.com
+                            {formDataState.email}
                         </p>
                         <p className="infor-item">
                             <span>
                                 <MdKeyboardArrowRight /> Address:
                             </span>{' '}
-                            Liên Hà, Đông Anh, Hà Nội
+                            {formDataState.address}
                         </p>
                         <div className="infor-cv">
-                            <a href={CV} download>
+                            <a
+                                // href={CV}
+                                href={`${uri}/${formDataState.CV}`}
+                                download
+                                // target="_blank"
+                            >
                                 <button className="beauty">
                                     Dowload CV <FiDownload></FiDownload>
                                 </button>

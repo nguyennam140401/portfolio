@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import WeatherApp from '../../assets/images/weather_app.png'
 import { Style } from './ProjectStyle'
 import TodoApp from '../../assets/images/todoapp.png'
 import ProjectItem from '../../components/ProjectItem/ProjectItem'
+import { UserContext } from '../../context/UserContext'
 const Project = () => {
-    const [listProject, setListProject] = useState([
-        {
-            name: 'Weather App',
-            img: WeatherApp,
-            description:
-                'Cho phép người dùng xem thời tiết hiện tại và dự báo cho 7 ngày tới',
-            tech: ['ReactJs'],
-            link: 'https://weather-app-namnv.netlify.app',
-        },
-        {
-            name: 'Todo App',
-            img: TodoApp,
-            description:
-                'Cho phép người dùng đăng nhập, thêm nhiệm vụ cần làm với các trạng thái(Hoàn thành, đang làm, chưa làm) kèm liên kết',
-            tech: ['ReactJs', 'NodeJs', 'MongoDB'],
-            link: 'https://namnv-todolist.netlify.app/',
-        },
-    ])
-    useEffect(() => {
+    // const [listProject, setListProject] = useState([
+    //     {
+    //         name: 'Weather App',
+    //         img: WeatherApp,
+    //         description:
+    //             'Cho phép người dùng xem thời tiết hiện tại và dự báo cho 7 ngày tới',
+    //         tech: ['ReactJs'],
+    //         link: 'https://weather-app-namnv.netlify.app',
+    //     },
+    //     {
+    //         name: 'Todo App',
+    //         img: TodoApp,
+    //         description:
+    //             'Cho phép người dùng đăng nhập, thêm nhiệm vụ cần làm với các trạng thái(Hoàn thành, đang làm, chưa làm) kèm liên kết',
+    //         tech: ['ReactJs', 'NodeJs', 'MongoDB'],
+    //         link: 'https://namnv-todolist.netlify.app/',
+    //     },
+    // ])
+    const { listProject } = useContext(UserContext)
+    useLayoutEffect(() => {
         const listProject = document.querySelectorAll(
             '.project__container--item'
         )
@@ -33,7 +35,7 @@ const Project = () => {
                 }
             })
         })
-    })
+    }, [])
 
     const hiddenDetail = () => {
         document

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import Footer from '../container/Footer/Footer'
 import { AuthContext } from '../context/AuthContext'
 import * as api from '../api'
+import { MdOutlineArrowBack } from 'react-icons/md'
 const SetProfilePage = () => {
     const {
         formDataState,
@@ -53,12 +54,16 @@ const SetProfilePage = () => {
         <Style>
             {localStorage.getItem('authToken') ? (
                 <div className="set-profile">
-                    <div className="title">Edit Your Profile</div>
+                    <div className="title">
+                        <MdOutlineArrowBack
+                            onClick={() => {
+                                navigate(-1)
+                            }}
+                        ></MdOutlineArrowBack>
+                        <h1>Edit Your Profile</h1>
+                    </div>
                     <div className="form">
-                        <form
-                            onSubmit={handleSubmit}
-                            enctype="multipart/form-data"
-                        >
+                        <form onSubmit={handleSubmit}>
                             <div className="form__control">
                                 <label htmlFor="name">Tên hiển thị</label>
                                 <input
@@ -79,7 +84,7 @@ const SetProfilePage = () => {
                                     id="job"
                                     name="job"
                                     value={formDataState.job}
-                                    placeholder="User Name"
+                                    placeholder="Công việc"
                                     onChange={changeInput}
                                 />
                             </div>
@@ -142,7 +147,7 @@ const SetProfilePage = () => {
                                 />
                             </div>
                             <div className="form__control">
-                                <label htmlFor="birthday">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -166,12 +171,24 @@ const SetProfilePage = () => {
                                 />
                             </div>
                             <div className="form__control">
+                                <label htmlFor="address">Địa chỉ</label>
+                                <input
+                                    type="text"
+                                    required
+                                    id="address"
+                                    value={formDataState.address}
+                                    name="address"
+                                    placeholder="Đông Anh, Hà Nội"
+                                    onChange={changeInput}
+                                />
+                            </div>
+                            <div className="form__control">
                                 <label htmlFor="CV">CV</label>
                                 <input
                                     type="file"
                                     id="CV"
-                                    value={formDataState.CV}
-                                    required
+                                    required={!formDataState.CV}
+                                    // value={formDataState.CV}
                                     name="CV"
                                     onChange={changeInput}
                                 />
@@ -181,8 +198,8 @@ const SetProfilePage = () => {
                                 <input
                                     type="file"
                                     id="avatar"
-                                    value={formDataState.avatar}
-                                    required
+                                    // value={formDataState.avatar}
+                                    required={!formDataState.avatar}
                                     name="avatar"
                                     onChange={changeInput}
                                 />

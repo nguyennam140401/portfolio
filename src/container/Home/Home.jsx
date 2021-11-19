@@ -1,32 +1,46 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Style } from './HomeStyle'
 import Avatar from '../../assets/images/avatar.jpg'
 import { TiArrowRightOutline } from 'react-icons/ti'
 import { FiFacebook, FiGithub } from 'react-icons/fi'
-
+import { UserContext } from '../../context/UserContext'
+import dotenv from 'dotenv'
+dotenv.config()
 const Home = () => {
+    const { formDataState } = useContext(UserContext)
+    const uri = process.env.URI_API || 'http://localhost:5000'
     return (
         <Style>
             <div className="section home" id="home">
                 <div className="home__img">
-                    <img src={Avatar} alt="" />
+                    <img src={`${uri}/${formDataState.avatar}`} alt="Avatar" />
                 </div>
                 <div className="home__content">
                     <h2 className="home__content--title">
-                        Xin chào , mình là Nam
+                        Xin chào , mình là {formDataState.name}
                     </h2>
-                    <p className="home__content--job">FrontEnd developer .</p>
+                    <p className="home__content--job">{formDataState.job}</p>
                     <p className="home__content--text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        In vel, deleniti neque vero corporis voluptatem
-                        doloribus ipsa officiis ipsam possimus, a ratione nam
-                        labore? Aut doloremque unde illo magnam quia!
+                        {formDataState.description}
                     </p>
                     <div className="home__content--link">
-                        <a href="https://www.facebook.com/bautroi.trongxanh.18/">
+                        <a
+                            href={
+                                formDataState.linkFb.indexOf('http://') === -1
+                                    ? `http://${formDataState.linkFb}`
+                                    : formDataState.linkFb
+                            }
+                        >
                             <FiFacebook></FiFacebook>
                         </a>
-                        <a href="https://github.com/nguyennam140401">
+                        <a
+                            href={
+                                formDataState.linkGithub.indexOf('http://') ===
+                                -1
+                                    ? `http://${formDataState.linkGithub}`
+                                    : formDataState.linkGithub
+                            }
+                        >
                             <FiGithub></FiGithub>
                         </a>
                     </div>

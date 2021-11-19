@@ -2,9 +2,23 @@ import styled from 'styled-components'
 export const Style = styled.div`
     .set-profile {
         .title {
-            color: var(--title-color);
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
             font-size: var(--big-font-size);
-            text-align: center;
+            h1 {
+                color: var(--title-color);
+                text-align: center;
+            }
+            svg {
+                position: absolute;
+                top: 50%;
+                left: 2rem;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: var(--first-color);
+            }
         }
         form {
             border-radius: 1rem;

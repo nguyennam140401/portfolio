@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Style } from './ContactStyle'
 import axios from 'axios'
 import {
@@ -6,31 +6,34 @@ import {
     HiOutlineMail,
     HiOutlinePhone,
 } from 'react-icons/hi'
+import { UserContext } from '../../context/UserContext'
 
 const Contact = () => {
-    const [formDataState, setFormDataState] = useState({
+    const [formState, setFormState] = useState({
         name: '',
         email: '',
         subject: '',
         message: '',
     })
+    const { formDataState } = useContext(UserContext)
     const changeInput = (e) => {
         const field = e.target.name
         const value = e.target.value
-        setFormDataState({ ...formDataState, [field]: value })
+        setFormState({ ...formState, [field]: value })
     }
     const submit = async (e) => {
         e.preventDefault()
-        console.log(formDataState)
+        console.log(formState)
         const res = await axios.post('http://localhost:5000/sendmail', {
-            to: formDataState.email,
-            subject: formDataState.subject,
-            message: formDataState.message,
+            to: formState.email,
+            subject: formState.subject,
+            message: formState.message,
+            emailUser: formDataState.email,
         })
 
         if (res.data.success) {
             alert('Cám ơn bạn đã gửi liên hệ')
-            setFormDataState({ name: '', email: '', subject: '', message: '' })
+            setFormState({ name: '', email: '', subject: '', message: '' })
         } else {
             alert('Xin lỗi có vấn đề trong quá trình gửi')
         }
@@ -46,7 +49,7 @@ const Contact = () => {
                                 <HiOutlineLocationMarker></HiOutlineLocationMarker>
                             </div>
                             <div className="location__infor">
-                                <p>Liên Hà Đông Anh Hà Nội</p>
+                                <p>{formDataState.address}</p>
                             </div>
                         </div>
                         <div className="location__item">
@@ -54,7 +57,7 @@ const Contact = () => {
                                 <HiOutlineMail></HiOutlineMail>
                             </div>
                             <div className="location__infor">
-                                <p>nguyennam140401@gmail.com</p>
+                                <p>{formDataState.email}</p>
                             </div>
                         </div>
                         <div className="location__item">
@@ -62,7 +65,7 @@ const Contact = () => {
                                 <HiOutlinePhone></HiOutlinePhone>
                             </div>
                             <div className="location__infor">
-                                <p>0346663207</p>
+                                <p>{formDataState.phone}</p>
                             </div>
                         </div>
                         <div className="location__item">

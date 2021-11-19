@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ProjectItem = ({ data, pos }) => {
+    const uri = process.env.URI_API || 'http://localhost:5000'
     const hiddenDetail = () => {
         document
             .querySelector('.project__container--item.active')
@@ -12,9 +13,9 @@ const ProjectItem = ({ data, pos }) => {
             data-delay={`${pos}`}
         >
             <div className="item__img">
-                <img src={data.img} alt="Weather App" />
+                <img src={`${uri}/${data.img}`} alt="Weather App" />
             </div>
-            <h4 className="item__title">{data.name}</h4>
+            <h4 className="item__title">{data.title}</h4>
             <div className="item__infor" onClick={hiddenDetail}>
                 <div
                     className="contain"
@@ -39,7 +40,14 @@ const ProjectItem = ({ data, pos }) => {
                         </div>
                     </div>
                     <div className="contain__infor--link">
-                        <a href="https://weather-app-namnv.netlify.app/">
+                        <a
+                            href={
+                                data.link.indexOf('http://') === -1
+                                    ? `http://${data.link}`
+                                    : data.link
+                            }
+                            target="_blank"
+                        >
                             <button className="beauty">Xem Chi Tiết</button>
                         </a>
                     </div>
