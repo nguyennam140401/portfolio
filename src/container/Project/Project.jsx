@@ -35,7 +35,7 @@ const Project = () => {
                 }
             })
         })
-    }, [])
+    }, [listProject])
 
     const hiddenDetail = () => {
         document

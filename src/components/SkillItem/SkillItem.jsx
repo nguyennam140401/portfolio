@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { RiPagesLine } from 'react-icons/ri'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 const SkillItem = ({ data, pos }) => {
+    // const show = (el) => {
+    //     el.classList.toggle('active')
+
+    // }
+    // useEffect(() => {
+    //     item.addEventListener('click', show(el))
+    //     return () => {
+    //         cleanup
+    //     }
+    // }, [])
     return (
         <div
             className="skill__container--item animation animation-top"
@@ -16,14 +26,13 @@ const SkillItem = ({ data, pos }) => {
                     <p>{data.time}</p>
                 </div>
                 <div className="infor__detail">
-                    {data.detail.map((item) => {
-                        return <div className="infor__detail--item">{item}</div>
+                    {data.detail.map((item, idx) => {
+                        return (
+                            <div key={idx} className="infor__detail--item">
+                                {item}
+                            </div>
+                        )
                     })}
-                    {/* <div className="infor__detail--item">HTML</div>
-                    <div className="infor__detail--item">CSS</div>
-                    <div className="infor__detail--item">Javascript</div>
-                    <div className="infor__detail--item">Reactjs</div>
-                    <div className="infor__detail--item">Nextjs</div> */}
                 </div>
             </div>
             <div className="option">

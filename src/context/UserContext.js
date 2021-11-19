@@ -72,14 +72,13 @@ const UserContextProvider = ({ children }) => {
         setListEducation([...listEducation, eduItem])
     }
     const changeInforEducation = (event, id) => {
-        // console.log(event.target, id)
         const field = event.target.name
         const value = event.target.value
         let newList = lang.cloneDeep(listEducation)
         newList = newList.map((item) => {
             return item.id === id ? { ...item, [field]: value } : item
         })
-        console.log(newList)
+
         setListEducation(newList)
     }
     const handleAddSkill = () => {
@@ -123,7 +122,7 @@ const UserContextProvider = ({ children }) => {
             }
             return item
         })
-        console.log(newList)
+
         setListProject(newList)
     }
     const changeInforSkill = (event, id) => {
@@ -142,15 +141,13 @@ const UserContextProvider = ({ children }) => {
     }
 
     const removeProjectItem = (id) => {
-        console.log(id)
         let newList = lang.cloneDeep(listProject)
         newList.forEach((item, idx) => {
             if (item.id === id) {
-                console.log(idx)
                 newList.splice(idx, 1)
             }
         })
-        console.log(newList)
+
         setListProject(newList)
     }
     const removeSkillItem = (id) => {
@@ -180,9 +177,9 @@ const UserContextProvider = ({ children }) => {
             educations: [...listEducation],
             project: [...listProject],
         }
-        console.log(userInfor)
+
         const result = await setupProfile(userInfor)
-        console.log(result)
+
         return result
     }
     const changeProfile = (data) => {

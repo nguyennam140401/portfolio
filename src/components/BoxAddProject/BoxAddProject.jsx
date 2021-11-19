@@ -3,7 +3,6 @@ import React, { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
 import { FaTimesCircle } from 'react-icons/fa'
 const BoxAddProject = ({ data }) => {
-    console.log(data)
     const { changeInforProject, removeProjectItem } = useContext(UserContext)
     return (
         <div className="form__control">

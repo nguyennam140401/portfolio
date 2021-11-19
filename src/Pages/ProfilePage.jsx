@@ -56,9 +56,9 @@ const ProfilePage = () => {
     useEffect(() => {
         const solve = async () => {
             try {
-                const name = params.id || 'nam0x2001'
+                const name = params.id || 'nam2001'
                 const userData = await api.getProfile(name)
-                console.log(userData)
+
                 changeProfile(userData.data)
             } catch (error) {
                 navigate('/page/404')

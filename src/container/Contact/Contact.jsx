@@ -23,7 +23,7 @@ const Contact = () => {
     }
     const submit = async (e) => {
         e.preventDefault()
-        console.log(formState)
+
         const res = await axios.post('http://localhost:5000/sendmail', {
             to: formState.email,
             subject: formState.subject,

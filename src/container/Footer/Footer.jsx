@@ -7,7 +7,6 @@ const Footer = () => {
         logout,
         authState: { isAuthenticated },
     } = useContext(AuthContext)
-    console.log(isAuthenticated)
     return (
         <Style>
             <div className="footer">

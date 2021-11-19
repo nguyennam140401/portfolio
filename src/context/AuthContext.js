@@ -22,7 +22,6 @@ const AuthContextProvider = ({ children }) => {
         try {
             const res = await api.login(data)
             if (res.success) {
-                console.log(res)
                 setAuthToken(res.acessToken)
                 localStorage.setItem('authToken', res.acessToken)
                 localStorage.setItem('username', res.user.username)

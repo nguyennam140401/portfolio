@@ -33,8 +33,12 @@ const ProjectItem = ({ data, pos }) => {
                         </div>
                         <div className="tech__item">
                             <h3>Công Nghệ</h3>
-                            {data.tech.map((item) => {
-                                return <div className="tool">{item}</div>
+                            {data.tech.map((item, idx) => {
+                                return (
+                                    <div key={idx} className="tool">
+                                        {item}
+                                    </div>
+                                )
                             })}
                             {/* <div className="tool">ReactJS</div> */}
                         </div>

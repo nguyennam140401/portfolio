@@ -33,9 +33,7 @@ const Login = () => {
         const res = await login(formDataState)
         setIsLoading(false)
         if (res.success) {
-            console.log(res)
             const userData = await api.getProfile(res.user.username)
-            console.log(userData.data)
 
             changeProfile(userData.data)
             alert('Đăng nhập thành công')

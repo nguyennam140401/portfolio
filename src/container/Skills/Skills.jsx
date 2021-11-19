@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
-import { RiPagesLine, RiDatabase2Line } from 'react-icons/ri'
+import React, { useContext, useEffect, useLayoutEffect } from 'react'
+// import { RiPagesLine, RiDatabase2Line } from 'react-icons/ri'
 import { Style } from './SkillStyle'
-import { MdKeyboardArrowDown, MdOutlineDesignServices } from 'react-icons/md'
+// import { MdKeyboardArrowDown, MdOutlineDesignServices } from 'react-icons/md'
 import SkillItem from '../../components/SkillItem/SkillItem'
 import { UserContext } from '../../context/UserContext'
 const Skills = () => {
@@ -23,15 +23,14 @@ const Skills = () => {
     //     },
     // ])
     const { listSkill } = useContext(UserContext)
-    console.log(listSkill)
-    useLayoutEffect(() => {
+    useEffect(() => {
         const listSkills = document.querySelectorAll('.skill__container--item')
         listSkills.forEach((item) => {
             item.addEventListener('click', () => {
                 item.classList.toggle('active')
             })
         })
-    }, [])
+    }, [listSkill])
     return (
         <Style>
             <div className="section skill" id="skill">

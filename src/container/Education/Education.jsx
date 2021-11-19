@@ -12,30 +12,10 @@ const Education = () => {
     //         timeStart: '2019',
     //         timeEnd: 'Nay',
     //     },
-    //     {
-    //         work: 'Information Technology',
-    //         location: 'Hanoi university of Industry',
-    //         icon: MdOutlineSchool,
-    //         timeStart: '2019',
-    //         timeEnd: 'Nay',
-    //     },
-    //     {
-    //         work: 'Information Technology',
-    //         location: 'Hanoi university of Industry',
-    //         icon: MdOutlineSchool,
-    //         timeStart: '2019',
-    //         timeEnd: 'Nay',
-    //     },
-    //     {
-    //         work: 'Information Technology',
-    //         location: 'Hanoi university of Industry',
-    //         icon: MdOutlineSchool,
-    //         timeStart: '2019',
-    //         timeEnd: 'Nay',
-    //     },
+
     // ])
     const { listEducation } = useContext(UserContext)
-    console.log(listEducation)
+
     return (
         <Style>
             <div className="section education" id="education">

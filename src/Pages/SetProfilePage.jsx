@@ -28,14 +28,13 @@ const SetProfilePage = () => {
     const navigate = useNavigate()
     useEffect(() => {
         if (!localStorage.getItem('authToken')) {
-            console.log('ok')
             return navigate('/login')
         }
         const solve = async () => {
             const userData = await api.getProfile(
                 localStorage.getItem('username')
             )
-            console.log(userData.data)
+
             changeProfile(userData.data)
         }
         solve()
@@ -43,7 +42,7 @@ const SetProfilePage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         const res = await updateProfile()
-        console.log(res)
+
         if (res.success) {
             navigate(`/${res.user}`)
         } else {
