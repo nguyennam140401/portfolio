@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { RiPagesLine } from 'react-icons/ri'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 const SkillItem = ({ data, pos }) => {

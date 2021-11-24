@@ -1,15 +1,17 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Style } from './SetProfilePageStyle'
 import { AiFillPlusCircle } from 'react-icons/ai'
 import BoxAddSkill from '../components/BoxAddSkill/BoxAddSkill'
 import BoxAddEducation from '../components/BoxAddEducation/BoxAddEducation'
 import BoxAddProject from '../components/BoxAddProject/BoxAddProject'
+import Progess from '../components/Progess'
 import { UserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../container/Footer/Footer'
-import { AuthContext } from '../context/AuthContext'
+// import { AuthContext } from '../context/AuthContext'
 import * as api from '../api'
 import { MdOutlineArrowBack } from 'react-icons/md'
+
 const SetProfilePage = () => {
     const {
         formDataState,
@@ -23,19 +25,21 @@ const SetProfilePage = () => {
         updateProfile,
         changeProfile,
     } = useContext(UserContext)
-
-    const { authState: isAuthenticated } = useContext(AuthContext)
+    const [isLoading, setIsLoading] = useState(false)
+    // const { authState: isAuthenticated } = useContext(AuthContext)
     const navigate = useNavigate()
     useEffect(() => {
         if (!localStorage.getItem('authToken')) {
             return navigate('/login')
         }
         const solve = async () => {
+            setIsLoading(true)
             const userData = await api.getProfile(
                 localStorage.getItem('username')
             )
 
             changeProfile(userData.data)
+            setIsLoading(false)
         }
         solve()
     }, [])
@@ -49,6 +53,7 @@ const SetProfilePage = () => {
             alert('Có lỗi ')
         }
     }
+    if (isLoading) return <Progess />
     return (
         <Style>
             {localStorage.getItem('authToken') ? (
@@ -123,13 +128,13 @@ const SetProfilePage = () => {
                                 />
                             </div>
                             <div className="form__control">
-                                <label htmlFor="linkTweet">Link Tweet</label>
+                                <label htmlFor="linkTweet">Link Twitter </label>
                                 <input
                                     type="text"
                                     id="linkTweet"
                                     value={formDataState.linkTweet}
                                     name="linkTweet"
-                                    placeholder="Tweet"
+                                    placeholder="Twitter "
                                     onChange={changeInput}
                                 />
                             </div>

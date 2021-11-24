@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import AboutImg from '../../assets/images/about.jpg'
+// import AboutImg from '../../assets/images/about.jpg'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import { Style } from './AboutStyle'
-import CV from '../../assets/CV_My_CV.pdf'
+// import CV from '../../assets/CV_My_CV.pdf'
 import { FiDownload } from 'react-icons/fi'
 import { UserContext } from '../../context/UserContext'
 const About = () => {

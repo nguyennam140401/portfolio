@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
-import WeatherApp from '../../assets/images/weather_app.png'
+import React, { useContext, useLayoutEffect } from 'react'
+
 import { Style } from './ProjectStyle'
-import TodoApp from '../../assets/images/todoapp.png'
+
 import ProjectItem from '../../components/ProjectItem/ProjectItem'
 import { UserContext } from '../../context/UserContext'
 const Project = () => {
@@ -37,11 +37,11 @@ const Project = () => {
         })
     }, [listProject])
 
-    const hiddenDetail = () => {
-        document
-            .querySelector('.project__container--item.active')
-            .classList.remove('active')
-    }
+    // const hiddenDetail = () => {
+    //     document
+    //         .querySelector('.project__container--item.active')
+    //         .classList.remove('active')
+    // }
     return (
         <Style>
             <div className="section project" id="project">

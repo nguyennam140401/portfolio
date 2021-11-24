@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext,useState } from 'react'
 import Home from '../container/Home/Home'
 import Navigation from '../container/Navigation/Navigation'
 import Contact from '../container/Contact/Contact'
@@ -7,6 +7,7 @@ import Project from '../container/Project/Project'
 import Skills from '../container/Skills/Skills'
 import Education from '../container/Education/Education'
 import Footer from '../container/Footer/Footer'
+import Progess from '../components/Progess'
 import { useParams } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +16,7 @@ const ProfilePage = () => {
     const navigate = useNavigate()
     const params = useParams()
     const { changeProfile } = useContext(UserContext)
-
+    const [isLoading, setIsLoading] = useState(false)
     const eventScroll = () => {
         const listSection = document.querySelectorAll('.section')
         const listAnimation = document.querySelectorAll('.animation')
@@ -55,11 +56,12 @@ const ProfilePage = () => {
     }
     useEffect(() => {
         const solve = async () => {
+            setIsLoading(true)
             try {
                 const name = params.id || 'nam2001'
                 const userData = await api.getProfile(name)
-
                 changeProfile(userData.data)
+                setIsLoading(false)
             } catch (error) {
                 navigate('/page/404')
                 console.log(error)
@@ -71,7 +73,7 @@ const ProfilePage = () => {
             window.removeEventListener('scroll', eventScroll)
         }
     }, [])
-
+    if(isLoading)return <Progess/>
     return (
         <div className="App">
             <Navigation />

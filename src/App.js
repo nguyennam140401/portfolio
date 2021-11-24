@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SetProfilePage from './Pages/SetProfilePage'
 import UserContextProvider from './context/UserContext'
 import AuthContextProvider from './context/AuthContext'
-import ProtectRouter from './router/ProtectRouter'
+// import ProtectRouter from './router/ProtectRouter'
 import Page404 from './Pages/Page404'
 function App() {
     return (

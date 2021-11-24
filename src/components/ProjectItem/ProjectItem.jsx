@@ -50,7 +50,6 @@ const ProjectItem = ({ data, pos }) => {
                                     ? `http://${data.link}`
                                     : data.link
                             }
-                            target="_blank"
                         >
                             <button className="beauty">Xem Chi Tiết</button>
                         </a>

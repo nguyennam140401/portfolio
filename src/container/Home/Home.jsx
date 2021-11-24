@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Style } from './HomeStyle'
-import Avatar from '../../assets/images/avatar.jpg'
+// import Avatar from '../../assets/images/avatar.jpg'
 import { TiArrowRightOutline } from 'react-icons/ti'
 import { FiFacebook, FiGithub } from 'react-icons/fi'
 import { UserContext } from '../../context/UserContext'

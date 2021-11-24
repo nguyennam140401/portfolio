@@ -42,6 +42,15 @@ const BoxAddProject = ({ data }) => {
                 ></textarea>
                 <input
                     type="text"
+                    value={data.description}
+                    name="description"
+                    onChange={(event) => {
+                        changeInforProject(event, data.id)
+                    }}
+                    placeholder="Giới thiệu sản phẩm"
+                />
+                <input
+                    type="text"
                     value={data.link}
                     name="link"
                     onChange={(event) => {

@@ -13,7 +13,7 @@ export const register = async (data) => {
 //     return res.data
 // }
 export const getProfile = async (username) => {
-    const data = { name: username }
+    // const data = { name: username }
     const res = await axios.get(`${uri}/auth?name=${username}`)
 
     return res.data

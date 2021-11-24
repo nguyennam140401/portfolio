@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 // import { RiPagesLine, RiDatabase2Line } from 'react-icons/ri'
 import { Style } from './SkillStyle'
 // import { MdKeyboardArrowDown, MdOutlineDesignServices } from 'react-icons/md'

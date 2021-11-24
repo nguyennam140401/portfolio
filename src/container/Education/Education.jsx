@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Style } from './EducationStyle'
-import { MdOutlineSchool } from 'react-icons/md'
+// import { MdOutlineSchool } from 'react-icons/md'
 import EduItem from '../../components/Edu/EduItem'
 import { UserContext } from '../../context/UserContext'
 const Education = () => {
