@@ -7,8 +7,10 @@ import {
     HiOutlinePhone,
 } from 'react-icons/hi'
 import { UserContext } from '../../context/UserContext'
-
+import dotenv from 'dotenv'
+dotenv.config()
 const Contact = () => {
+    const uri = process.env.REACT_APP_URI_API || 'http://localhost:5000'
     const [formState, setFormState] = useState({
         name: '',
         email: '',
@@ -24,7 +26,7 @@ const Contact = () => {
     const submit = async (e) => {
         e.preventDefault()
 
-        const res = await axios.post('http://localhost:5000/sendmail', {
+        const res = await axios.post(`${uri}/sendmail`, {
             to: formState.email,
             subject: formState.subject,
             message: formState.message,

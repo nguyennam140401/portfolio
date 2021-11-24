@@ -1,7 +1,8 @@
 import React from 'react'
-
+import dotenv from 'dotenv'
+dotenv.config()
 const ProjectItem = ({ data, pos }) => {
-    const uri = process.env.URI_API || 'http://localhost:5000'
+    const uri = process.env.REACT_APP_URI_API || 'http://localhost:5000'
     const hiddenDetail = () => {
         document
             .querySelector('.project__container--item.active')

@@ -1,4 +1,6 @@
-const uri = process.env.URL_API || 'http://localhost:5000'
+import dotenv from 'dotenv'
+dotenv.config()
+const uri = process.env.REACT_APP_URI_APP || 'http://localhost:5000'
 const axios = require('axios')
 export const login = async (data) => {
     const res = await axios.post(`${uri}/auth/login`, data)

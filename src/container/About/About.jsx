@@ -5,9 +5,11 @@ import { Style } from './AboutStyle'
 // import CV from '../../assets/CV_My_CV.pdf'
 import { FiDownload } from 'react-icons/fi'
 import { UserContext } from '../../context/UserContext'
+import dotenv from 'dotenv'
+dotenv.config()
 const About = () => {
     const { formDataState } = useContext(UserContext)
-    const uri = process.env.URI_API || 'http://localhost:5000'
+    const uri = process.env.REACT_APP_URI_API || 'http://localhost:5000'
     return (
         <Style>
             <div className="section about" id="about">

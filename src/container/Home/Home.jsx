@@ -8,7 +8,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 const Home = () => {
     const { formDataState } = useContext(UserContext)
-    const uri = process.env.URI_API || 'http://localhost:5000'
+    const uri = process.env.REACT_APP_URI_API || 'http://localhost:5000'
     return (
         <Style>
             <div className="section home" id="home">
